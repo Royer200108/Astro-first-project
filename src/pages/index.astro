@@ -1,5 +1,24 @@
 ---
+import '../styles/global.css';
 
+import Header from '../components/Header.astro';
+
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Sobre mi";
+
+const identity = {
+	firstName: "Royer",
+	country: "Honduras",
+	occupation: "Desarrollador de Software",
+	hobbies: ["acuarios", "jugar videosjuegos"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Redacción de documentos"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -8,17 +27,36 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<a href="/">Inicio</a>
-		<a href="/about/">Sobre mi</a>
-		<a href="/blog/">Blog</a>
+		<Header />
 		
-		<h1>Sobre mi</h1>
+		<h1>{pageTitle}</h1>
 		<h2>... ¡y mi nuevo sitio Astro!</h2>
 
 		<h1>Astro</h1>
 		<h1>Mi sitio Astro</h1>
+
+		<p>He aquí algunos datos sobre mí:</p>
+		<ul>
+			<li>Me llamo {identity.firstName}.</li>
+			<li>Vivo en {identity.country} y trabajo como {identity.occupation}.</li>
+			{identity.hobbies.length >= 2 &&
+				<li>Dos de mis aficiones son: {identity.hobbies[0]} y {identity.hobbies[1]}</li>
+			}
+		</ul>
+		<p>Mis habilidades son:</p>
+		<ul>
+			{skills.map((skill) => <li>{skill}</li>)}
+		</ul>
+
+		{happy && <p>¡Estoy feliz de aprender Astro!</p>}
+
+		{finished && <p>¡He terminado este tutorial!</p>}
+		
+		{goal === 3 ? <p>Mi objetivo es terminar en 3 días.</p> : <p>Mi objetivo no son 3 días.</p>}
+
+		<Footer />
 	</body>
 </html>
