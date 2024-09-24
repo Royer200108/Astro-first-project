@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 const filteredPosts = posts.filter((post) => post.frontmatter.tags?.includes(tag));
+//Comentario
 ---
 
 <BaseLayout pageTitle={tag}>
